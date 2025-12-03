@@ -10,11 +10,11 @@ const ProductCard = ( { product } ) => {
 
    const dispatch = useDispatch();
  
-   const hnadleAddToCart = useCallback( ( product ) => () => {  
-        const totalPrice = priceUpdateOnUnitChange(unit) * quantity;
-        dispatch( addToCart( { ...product, qty: quantity, selectedUnit: unit , totalPrice:totalPrice} ) );
+   const hnadleAddToCart = useCallback( ( product ) => () => {    
+        dispatch( addToCart( { ...product, qty: quantity, selectedUnit: unit} ) );
    }  , [ dispatch, quantity, unit ] );
 
+  
    const priceUpdateOnUnitChange = (selectedUnit) => {
        const selected = product?.units?.find((u) => u?.name === selectedUnit);
         if (selected) {

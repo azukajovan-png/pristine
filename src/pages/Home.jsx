@@ -19,9 +19,13 @@ import {
   DrawerCloseButton,
   Image,
   Text,
+  Button,
 } from '@chakra-ui/react';
 import { Link, useSearchParams } from 'react-router';
 import { useEffect, useState } from 'react'; 
+
+
+
 
 import SideBar from '../components/SideBar';
 import ProductCard from '../components/ProductCard'; 
@@ -160,15 +164,24 @@ export default function Home() {
            
                      {/* 🛒 Icons */}
                      <HStack spacing={4} px={4}>
-                       <Box position="relative" cursor="pointer">
-                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                           <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-                         </svg>
-                         <Badge position="absolute" top="-8px" right="-8px" bg="black" color="white" borderRadius="full" fontSize="xs">
-                           {wishlistCount}
-                         </Badge>
-                       </Box>
-           
+                      <Button
+                          variant="ghost"
+                          size={{ base: "sm", md: "md" }}
+                          leftIcon={
+                            <Box as="span" display="inline-flex">
+                              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                                <line x1="12" y1="22.08" x2="12" y2="12" />
+                              </svg>
+                            </Box>
+                          }
+                          _hover={{ bg: "gray.100" }}
+                          title="Track Order"
+                        >
+                          <Text display={{ base: "none", sm: "inline" }}>Track Order</Text>
+                        </Button>
+                                             
                        <Box position="relative" cursor="pointer" as={Link} to={'/cart'}>
                          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                            <circle cx="9" cy="21" r="1" />

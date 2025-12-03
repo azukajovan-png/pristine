@@ -10,14 +10,16 @@ const cartSlice = createSlice({
     reducers:{
         // create the addToCart function
         addToCart:(state, action)=>{
-            const { id } = action.payload;
-          const item = state.cart.find( p => p.id === id); // check if item already exist in the cart azukajovani@gmail.com
+            const { id, qty } = action.payload;
+          const item = state?.cart?.find( p => p.id === id ); // check if item already exist in the cart 
+          console.log("Existing Item in Cart:::", item, id);
+        //   return;
           if(item){
-            state.cart.push({qty:item.qty++, ...item});
+            item.qty += qty; 
           }else{ 
-              state.cart.push( { qty:1, ...action.payload });
+              state.cart.push( { qty, ...action.payload });
           }
-         state.cart.push( action.payload );
+        //  state.cart.push( action.payload );
         }, 
         // remove item from cart
         removeCartItem:(state, action)=>{
